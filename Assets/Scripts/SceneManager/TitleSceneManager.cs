@@ -56,9 +56,28 @@ public class TitleSceneManager : MonoBehaviour
         }
     }
 
+    private IEnumerator FadeColor(float start, float end, Image img)
+    {
+        float CurrentTime = 0.0f;
+        float Percent = 0.0f;
+        while (Percent < 1)
+        {
+            CurrentTime += Time.deltaTime;
+            Percent = CurrentTime / FadeTime;
+
+            Color color = img.color;
+            color.r = Mathf.Lerp(start, end, Percent);
+            color.g = Mathf.Lerp(start, end, Percent);
+            color.b = Mathf.Lerp(start, end, Percent);
+            img.color = color;
+            yield return null;
+        }
+    }
+
 
     private void Awake()
     {
+        ProducedBy.gameObject.SetActive(true);
         StartCoroutine(Fade(0, 1, ProducedBy));
     }
 
@@ -79,6 +98,7 @@ public class TitleSceneManager : MonoBehaviour
         {
             StartCoroutine(Fade(0, 1, Overtake));
             StartCoroutine(Fade(0, 1, Motto));
+            StartCoroutine(FadeColor(0, 1, BG));
         }
     }
 }
