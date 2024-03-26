@@ -8,5 +8,26 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/TitleScene.unity
+    guid: 1fd35f4155f36e945a162fb53b6e249d
+  - enabled: 1
+    path: Assets/Scenes/SkillAnalyzerScene.unity
+    guid: c6725f8351454044c91d5066fa33d700
+  - enabled: 1
+    path: Assets/Scenes/SettingScene.unity
+    guid: 43eb60da43fbae44cb26bfcce14a0073
+  - enabled: 1
+    path: Assets/Scenes/SelectMusicScene.unity
+    guid: 0e61c38144e08754aa8f1a545dd9713d
+  - enabled: 1
+    path: Assets/Scenes/ResultScene.unity
+    guid: e12ba1df1778c5c44899c6862e734a3f
+  - enabled: 1
+    path: Assets/Scenes/OriginalScene.unity
+    guid: 1f90dd45f7ef2c94fa05aa325f297362
+  - enabled: 1
+    path: Assets/Scenes/InGameScene.unity
+    guid: 38a3c7b627224ae4a840f8d6d059a9bc
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a59f1365a24f1af439f28b52ab675b2a, type: 2}

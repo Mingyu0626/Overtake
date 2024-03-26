@@ -13,6 +13,9 @@ public class TitleSceneManager : MonoBehaviour
     public TextMeshProUGUI ProducedBy;
     public TextMeshProUGUI Overtake;
     public TextMeshProUGUI Motto;
+    public Button StartButton;
+    public Button SkillAnalyzerButton;
+    public Button SettingButton;
     public Image BG;
 
     [SerializeField]
@@ -33,7 +36,7 @@ public class TitleSceneManager : MonoBehaviour
         }
     }
 
-    private IEnumerator Fade(float start, float end, TextMeshProUGUI tmp)
+    private IEnumerator Fade(float start, float end, Graphic tmp)
     {
         float CurrentTime = 0.0f;
         float Percent = 0.0f;
@@ -56,7 +59,7 @@ public class TitleSceneManager : MonoBehaviour
         }
     }
 
-    private IEnumerator FadeColor(float start, float end, Image img)
+    private IEnumerator FadeColor(float start, float end, Graphic img)
     {
         float CurrentTime = 0.0f;
         float Percent = 0.0f;
@@ -98,6 +101,9 @@ public class TitleSceneManager : MonoBehaviour
         {
             StartCoroutine(Fade(0, 1, Overtake));
             StartCoroutine(Fade(0, 1, Motto));
+            StartCoroutine(Fade(0, 1, SkillAnalyzerButton.GetComponent<Image>()));
+            StartCoroutine(Fade(0, 1, StartButton.GetComponent<Image>()));
+            StartCoroutine(Fade(0, 1, SettingButton.GetComponent<Image>()));
             StartCoroutine(FadeColor(0, 1, BG));
         }
     }
