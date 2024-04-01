@@ -31,7 +31,10 @@ public class ChangeSceneAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        OpenSceneAnimation();
+        if (!IsAnimationOpened)
+        {
+            OpenSceneAnimation();
+        }
     }
 
     // Update is called once per frame
