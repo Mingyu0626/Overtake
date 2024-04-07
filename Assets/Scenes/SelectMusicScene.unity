@@ -521,6 +521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 881674965}
   - component: {fileID: 881674964}
+  - component: {fileID: 881674966}
   m_Layer: 0
   m_Name: SelectMusicSceneManager
   m_TagString: Untagged
@@ -558,6 +559,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &881674966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881674963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd8b082f0239c824f8fe85de7830948b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1157839203
 GameObject:
   m_ObjectHideFlags: 0
