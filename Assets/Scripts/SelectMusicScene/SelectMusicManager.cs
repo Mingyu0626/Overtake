@@ -4,14 +4,6 @@ using UnityEngine.UI;
 using UnityEngine;
 
 
-[System.Serializable]
-public class Music
-{
-    public string title;
-    public string composer;
-    public int bpm;
-    public Sprite sprite;
-}
 
 public class SelectMusicSceneManager : MonoBehaviour
 {
