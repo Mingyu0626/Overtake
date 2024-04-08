@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 
 
 public class SelectMusicSceneManager : MonoBehaviour
 {
     [SerializeField] Music[] MusicList = null;
-    [SerializeField] Text TextMusicTitle = null;
-    [SerializeField] Text TextMusicComposer = null;
-    [SerializeField] Text TextMusicBPM = null;
+    [SerializeField] TMP_Text TextMusicTitle = null;
+    [SerializeField] TMP_Text TextMusicComposer = null;
+    [SerializeField] TMP_Text TextMusicBPM = null;
     [SerializeField] Image Img = null;
     [SerializeField] GameObject TitleMenu = null;
 
