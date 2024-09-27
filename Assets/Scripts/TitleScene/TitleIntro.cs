@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using TMPro;
+using System.Collections;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,22 +11,20 @@ using UnityEngine.SceneManagement;
 public class TitleSceneManager : MonoBehaviour
 {
     public float Speed = 0.1f;
-    public TextMeshProUGUI ProducedBy;
-    public TextMeshProUGUI Overtake;
-    public TextMeshProUGUI Motto;
-    public Button StartButton;
-    public Button SkillAnalyzerButton;
-    public Button SettingButton;
+    public TextMeshProUGUI producedBy;
+    public TextMeshProUGUI overtake;
+    public TextMeshProUGUI motto;
+    public Button startButton;
+    public Button skillAnalyzerButton;
+    public Button settingButton;
     public Image BG;
 
     [SerializeField]
     [Range(0.01f, 10f)]
-    private float FadeTime;
-    private bool isProduceByBright = false;
-    private bool isOvertakeReady = false;
-    public void ChangeScene(int SceneNumber)
+    private float fadeTime;
+    public void ChangeScene(int sceneNumber)
     {
-        switch(SceneNumber)
+        switch(sceneNumber)
         {
             case 0:
                 break;
@@ -36,43 +35,62 @@ public class TitleSceneManager : MonoBehaviour
         }
     }
 
-    private IEnumerator Fade(float start, float end, Graphic tmp)
+    private IEnumerator FadeIn(Graphic obj, System.Action onComplete = null)
     {
-        float CurrentTime = 0.0f;
-        float Percent = 0.0f;
-        while (Percent < 1)
+        float currentTime = 0.0f;
+        float percent = 0.0f;
+        while (percent < 1)
         {
-            CurrentTime += Time.deltaTime;
-            Percent = CurrentTime / FadeTime;
-
-            Color color = tmp.color;
-            color.a = Mathf.Lerp(start, end, Percent);
-            tmp.color = color;
+            currentTime += Time.deltaTime;
+            percent = currentTime / fadeTime;
+            float alphaValue = Mathf.Lerp(0, 1, percent);
+            obj.color = new Color(obj.color.r, obj.color.g, obj.color.b, alphaValue);
             yield return null;
         }
+        yield return new WaitForSeconds(1f);
+        onComplete?.Invoke();
+    }
 
-        if (tmp.color.a == 1) isProduceByBright = true;
-        else
+    private IEnumerator FadeOut(Graphic obj, System.Action onComplete = null)
+    {
+        float currentTime = 0.0f;
+        float percent = 0.0f;
+        while (percent < 1)
         {
-            isOvertakeReady = true;
-            ProducedBy.gameObject.SetActive(false);
+            currentTime += Time.deltaTime;
+            percent = currentTime / fadeTime;
+            float alphaValue = Mathf.Lerp(1, 0, percent);
+            obj.color = new Color(obj.color.r, obj.color.g, obj.color.b, alphaValue);
+            yield return null;
+        }
+        yield return new WaitForSeconds(1f);
+        onComplete?.Invoke();
+    }
+
+    private IEnumerator FadeInColor(Graphic obj)
+    {
+        float currentTime = 0.0f;
+        float percent = 0.0f;
+        while (percent < 1)
+        {
+            currentTime += Time.deltaTime;
+            percent = currentTime / fadeTime;
+            float rgbValue = Mathf.Lerp(0, 1, percent);
+            obj.color = new Color(rgbValue, rgbValue, rgbValue);
+            yield return null;
         }
     }
 
-    private IEnumerator FadeColor(float start, float end, Graphic img)
+    private IEnumerator FadeOutColor(Graphic obj)
     {
         float CurrentTime = 0.0f;
         float Percent = 0.0f;
         while (Percent < 1)
         {
             CurrentTime += Time.deltaTime;
-            Percent = CurrentTime / FadeTime;
-
-            Color color = img.color;
-            color.r = Mathf.Lerp(start, end, Percent);
-            color.g = Mathf.Lerp(start, end, Percent);
-            color.b = Mathf.Lerp(start, end, Percent);
-            img.color = color;
+            Percent = CurrentTime / fadeTime;
+            float RGBValue = Mathf.Lerp(1, 0, Percent);
+            obj.color = new Color(RGBValue, RGBValue, RGBValue);
             yield return null;
         }
     }
@@ -80,8 +98,8 @@ public class TitleSceneManager : MonoBehaviour
 
     private void Awake()
     {
-        ProducedBy.gameObject.SetActive(true);
-        StartCoroutine(Fade(0, 1, ProducedBy));
+        producedBy.gameObject.SetActive(true);
+        StartCoroutine(FadeIn(producedBy, () => StartCoroutine(FadeOut(producedBy))));
     }
 
     // Start is called before the first frame update
@@ -93,18 +111,7 @@ public class TitleSceneManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isProduceByBright) 
-        {
-            StartCoroutine(Fade(1, 0, ProducedBy));
-        }
-        if (isOvertakeReady)
-        {
-            StartCoroutine(Fade(0, 1, Overtake));
-            StartCoroutine(Fade(0, 1, Motto));
-            StartCoroutine(Fade(0, 1, SkillAnalyzerButton.GetComponent<Image>()));
-            StartCoroutine(Fade(0, 1, StartButton.GetComponent<Image>()));
-            StartCoroutine(Fade(0, 1, SettingButton.GetComponent<Image>()));
-            StartCoroutine(FadeColor(0, 1, BG));
-        }
+
+
     }
 }

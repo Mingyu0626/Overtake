@@ -1954,9 +1954,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1696000246}
-  - component: {fileID: 1696000247}
   - component: {fileID: 1696000248}
   - component: {fileID: 1696000249}
+  - component: {fileID: 1696000250}
   m_Layer: 0
   m_Name: TitleSceneManager
   m_TagString: Untagged
@@ -1979,27 +1979,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1696000247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1696000245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82c17a9aac370db4da02c62bc32ce737, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 1
-  ProducedBy: {fileID: 1416402512}
-  Overtake: {fileID: 161911359}
-  Motto: {fileID: 838299623}
-  StartButton: {fileID: 1534462303}
-  SkillAnalyzerButton: {fileID: 1459003201}
-  SettingButton: {fileID: 136162769}
-  BG: {fileID: 73259455}
-  FadeTime: 2
 --- !u!114 &1696000248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2028,6 +2007,27 @@ MonoBehaviour:
   Left: {fileID: 1168868168}
   Right: {fileID: 1928834150}
   IsAnimationOpened: 1
+--- !u!114 &1696000250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696000245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82c17a9aac370db4da02c62bc32ce737, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 0.1
+  producedBy: {fileID: 1416402512}
+  overtake: {fileID: 161911359}
+  motto: {fileID: 838299623}
+  startButton: {fileID: 1534462303}
+  skillAnalyzerButton: {fileID: 1459003201}
+  settingButton: {fileID: 136162769}
+  BG: {fileID: 73259455}
+  fadeTime: 2
 --- !u!1 &1748813874
 GameObject:
   m_ObjectHideFlags: 0
