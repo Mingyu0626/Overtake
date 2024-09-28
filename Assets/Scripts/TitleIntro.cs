@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using TMPro;
-using System.Collections;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UI;
@@ -98,8 +97,11 @@ public class TitleSceneManager : MonoBehaviour
 
     private void Awake()
     {
-        producedBy.gameObject.SetActive(true);
-        StartCoroutine(FadeIn(producedBy, () => StartCoroutine(FadeOut(producedBy))));
+        if (producedBy != null)
+        {
+            producedBy.gameObject.SetActive(true);
+            StartCoroutine(FadeIn(producedBy, () => StartCoroutine(FadeOut(producedBy))));
+        }
     }
 
     // Start is called before the first frame update
