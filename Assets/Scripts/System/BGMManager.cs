@@ -5,17 +5,38 @@ using UnityEngine;
 
 public class BGMManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    private void Awake()
+    static BGMManager _instance;
+
+    public static BGMManager GetInstance()
     {
-      DontDestroyOnLoad(gameObject);
+        Init();
+        return _instance;
+    }
+
+    static void Init()
+    {
+        if (_instance == null)
+        {
+            GameObject gameObject = GameObject.Find("BGMManager");
+
+            if (gameObject == null)
+            {
+                gameObject = new GameObject { name = "BGMManager" };
+            }
+            if (gameObject.GetComponent<BGMManager>() == null)
+            {
+                gameObject.AddComponent<BGMManager>();
+            }
+            DontDestroyOnLoad(gameObject);
+            _instance = gameObject.GetComponent<BGMManager>();
+        }
     }
 
     void Start()
     {
+        Init();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
